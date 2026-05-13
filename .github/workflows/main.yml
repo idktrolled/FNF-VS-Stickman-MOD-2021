@@ -31,7 +31,7 @@ jobs:
           haxelib install flixel-ui 2.4.0
           haxelib install newgrounds 1.1.4
           haxelib install hscript 2.4.0
-          haxelib install polymod 1.0.0
+          haxelib git polymod https://github.com/FunkinCrew/polymod/tree/v1.1
           haxelib install hxcpp 4.2.1
           haxelib install actuate 1.8.9
           haxelib install linc_luajit 0.0.7
