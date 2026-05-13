@@ -1,5 +1,9 @@
 package;
 
+#if android
+import extension.videoview.VideoView;
+#end
+import flixel.FlxBasic;
 import flixel.util.FlxColor;
 import flixel.FlxG;
 import flixel.FlxState;
@@ -15,16 +19,25 @@ import flixel.FlxSprite;
 // THIS IS FOR TESTING
 // DONT STEAL MY CODE >:(
 
+#if !android
 class MP4Handler
+#elseif android
+class MP4Handler extends FlxBasic
+#end
 {
 	public static var video:Video;
 	public static var netStream:NetStream;
+        #if android
+        public var finishCallback:Void->Void = null;
+        #elseif !android
 	public static var finishCallback:FlxState;
+        #end
 	public var sprite:FlxSprite;
 	#if desktop
 	public static var vlcBitmap:VlcBitmap;
 	#end
 
+	#if !android
 	public function new()
 	{
 
@@ -35,6 +48,7 @@ class MP4Handler
 			FlxG.sound.music.stop();
 		}
 	}
+	#end
 
 	public function playMP4(path:String, callback:FlxState, ?outputTo:FlxSprite = null, ?repeat:Bool = false, ?isWindow:Bool = false, ?isFullscreen:Bool = false):Void
 	{
@@ -63,7 +77,16 @@ class MP4Handler
 		nc.addEventListener("netStatus", netConnection_onNetStatus);
 
 		netStream.play(path);
-		#else
+        #elseif android
+		VideoView.playVideo('assets/videos/$path.mp4');
+		VideoView.onCompletion = function()
+		{
+			if (finishCallback != null)
+			{
+				finishCallback();
+			}
+		}
+		#elseif !android
 		finishCallback = callback;
 
 		vlcBitmap = new VlcBitmap();
@@ -100,6 +123,7 @@ class MP4Handler
 		#end
 	}
 
+	#if !android
 	#if desktop
 	function checkFile(fileName:String):String
 	{
@@ -208,6 +232,7 @@ class MP4Handler
 		else
 			LoadingState.loadAndSwitchState(new MainMenuState());
 	}
+	#end
 
 	// old html5 player
 	/*

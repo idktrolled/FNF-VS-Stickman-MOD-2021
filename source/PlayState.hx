@@ -3669,7 +3669,7 @@ class PlayState extends MusicBeatState
 				// nada 
 			}
 
-
+			#if !android
 			public function backgroundVideo(source:String) // for background videos
 				{
 					#if cpp
@@ -3725,7 +3725,7 @@ class PlayState extends MusicBeatState
 						webmHandler.resume();
 					#end
 				}
-
+				#end
 	function noteMiss(direction:Int = 1, daNote:Note):Void
 	{
 		if (!boyfriend.stunned)
