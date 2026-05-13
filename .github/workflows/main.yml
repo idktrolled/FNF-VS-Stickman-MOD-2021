@@ -7,12 +7,12 @@ jobs:
     steps:
       - name: checkout
         uses: actions/checkout@main
-      - name: java
+      - name: setup java
         uses: actions/setup-java@main
         with:
           java-version: 11
           distribution: temurin
-      - name: ndk
+      - name: setup ndk
         uses: nttld/setup-ndk@main
         id: setup-ndk
         with:
@@ -20,7 +20,7 @@ jobs:
       - name: setup haxe
         uses: krdlab/setup-haxe@master
         with:
-          haxe-version: 4.2.2
+          haxe-version: 4.2.3
       - name: install libraries
         run: |
           haxelib setup ~/haxelib
@@ -34,11 +34,11 @@ jobs:
           haxelib install polymod 1.5.2
           haxelib install hxcpp 4.2.1
           haxelib install actuate 1.8.9
+          haxelib install linc_luajit 0.0.7
           haxelib git extension-webm https://github.com/brusakas/extension-webm
-          haxelib git linc_luajit https://github.com/andreirudenko/linc_luajit
           haxelib git faxe https://github.com/ashea-code/faxe
           haxelib git discord_rpc https://github.com/aidan63/linc_discord-rpc
-      - name: android
+      - name: setup android
         run: |
           haxelib run lime config ANDROID_SDK $ANDROID_HOME
           haxelib run lime config ANDROID_NDK_ROOT $ANDROID_NDK_HOME
