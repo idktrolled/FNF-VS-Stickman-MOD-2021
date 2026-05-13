@@ -730,6 +730,7 @@ class PlayState extends MusicBeatState
 					    defaultCamZoom = 0.9;
 						
 						curStage = 'jackroom';
+					    #if !android
 						var images = [];
 						var xml = [];
 			
@@ -760,6 +761,7 @@ class PlayState extends MusicBeatState
 										
 										trace("cached " + replaced);
 									}
+					    #end
 						var bg:FlxSprite = new FlxSprite(-3000, -200).loadGraphic(Paths.image('kack/Jack BG'));
 						bg.antialiasing = true;
 						bg.scrollFactor.set(0.9, 0.9);
@@ -777,6 +779,7 @@ class PlayState extends MusicBeatState
 					    defaultCamZoom = 0.9;
 						
 						curStage = 'jackroomfight';
+					    #if !android
 						var images = [];
 						var xml = [];
 			
@@ -807,6 +810,7 @@ class PlayState extends MusicBeatState
 										
 										trace("cached " + replaced);
 									}
+					    #end
 						var bg:FlxSprite = new FlxSprite(-3000, -200).loadGraphic(Paths.image('kack/Jack BG'));
 						bg.antialiasing = true;
 						bg.scrollFactor.set(0.9, 0.9);
@@ -828,6 +832,7 @@ class PlayState extends MusicBeatState
 				{
 					defaultCamZoom = 0.9;
 					curStage = 'disyroom';
+					#if !android
 					var images = [];
 						var xml = [];
 			
@@ -858,6 +863,7 @@ class PlayState extends MusicBeatState
 										
 										trace("cached " + replaced);
 									}
+					#end
 					room = new FlxSprite(-800, -200).loadGraphic(Paths.image('kack/Jack BG'));
 					room.antialiasing = true;
 					room.scrollFactor.set(0.9, 0.9);
