@@ -26,12 +26,12 @@ jobs:
           haxelib setup ~/haxelib
           haxelib install lime 7.9.0
           haxelib install openfl 9.1.0
-          haxelib install flixel 4.9.0
-          haxelib install flixel-addons 2.9.0
-          haxelib install flixel-ui 2.3.3
+          haxelib install flixel 4.10.0
+          haxelib install flixel-addons 2.11.0
+          haxelib install flixel-ui 2.4.0
           haxelib install newgrounds 1.1.4
           haxelib install hscript 2.4.0
-          haxelib install polymod 1.5.2
+          haxelib install polymod 1.0.0
           haxelib install hxcpp 4.2.1
           haxelib install actuate 1.8.9
           haxelib install linc_luajit 0.0.7
