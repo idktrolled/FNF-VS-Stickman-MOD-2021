@@ -56,11 +56,6 @@ class TitleState extends MusicBeatState
 		#if polymod
 		polymod.Polymod.init({modRoot: "mods", dirs: ['introMod']});
 		#end
-		
-		#if (sys || !android)
-		if (!sys.FileSystem.exists(Sys.getCwd() + "/assets/replays"))
-			sys.FileSystem.createDirectory(Sys.getCwd() + "/assets/replays");
-		#end
 
 		@:privateAccess
 		{
@@ -85,13 +80,6 @@ class TitleState extends MusicBeatState
 		// DEBUG BULLSHIT
 
 		super.create();
-
-		// NGio.noLogin(APIStuff.API);
-
-		#if ng
-		var ng:NGio = new NGio(APIStuff.API, APIStuff.EncKey);
-		trace('NEWGROUNDS LOL');
-		#end
 
 		FlxG.save.bind('funkin', 'ninjamuffin99');
 
